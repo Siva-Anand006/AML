@@ -1,0 +1,11 @@
+Vendor ID,Vendor Name,Service Type,Department,Data Sensitivity,Risk Rating,Last Assessment Date,Contract Expiry Date,Status
+VND-01,Global Cloud Hosting Inc.,SaaS Platform,IT Operations,High,Critical,2026-01-10,2026-12-31,Approved
+VND-02,SecureAuth Integrations,Identity Provider,Information Security,High,High,2025-11-05,2026-06-15,Review Required
+VND-03,QuickComm Chat,Messaging Service,HR,Medium,Medium,2026-02-20,2027-02-20,Approved
+VND-04,Apex Payroll Systems,Financial SaaS,HR,High,High,2025-08-14,2026-08-14,Approved
+VND-05,Prime Dev Studio,External Contractor,Engineering,Medium,High,2025-12-10,2026-05-30,High Risk
+VND-06,LegalForce Docs,Document Management,Legal & Procurement,Medium,Low,2026-03-01,2027-03-01,Approved
+VND-07,OfficePower Utilities,Building Operations,Facilities,Low,Low,2025-07-22,2026-07-22,Approved
+VND-08,ByteForce Analytics,Data Storage,Engineering,High,Critical,2025-10-18,2026-04-18,High Risk
+VND-09,Delta Marketing CRM,SaaS Platform,Compliance,High,Medium,2026-04-05,2027-04-05,Approved
+VND-10,EcoRecycling Hub,Waste Disposal,Facilities,Low,Low,2025-09-12,2026-09-12,Approved

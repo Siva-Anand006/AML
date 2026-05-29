@@ -1,0 +1,9 @@
+Finding ID,Finding Title,Related Control ID,Department,Severity,Status,Days Open,Owner,Recommendation
+AUD-01,Missing access logs for legacy financial database,CTRL-12,Information Security,Critical,Open,45,Alex Mercer,Integrate database transactions directly with the centralized SIEM logging server.
+AUD-02,Outdated operating systems on testing environments,CTRL-13,Information Security,High,In Progress,30,Alex Mercer,Update OS on all sandbox environments and incorporate them into the master patching schedule.
+AUD-03,Delays in offboarding access permissions during employee terminations,CTRL-04,HR,High,Overdue,65,Emma Watson,Implement a formal automated ticket system syncing HR departures to Active Directory.
+AUD-04,Incomplete business continuity simulations,CTRL-17,IT Operations,Medium,Open,15,David Chen,Conduct tabletop recovery exercises with key department leads and document the failover times.
+AUD-05,Missing SSL certificates on internal administrative portals,CTRL-10,Engineering,Medium,Closed,22,Marcus Vance,Deploy Let's Encrypt automated certificates to secure web consoles.
+AUD-06,Biometric visitor check-in logs not retained,CTRL-06,Facilities,Low,Closed,10,John Miller,Configure physical storage solutions to persist entry log entries for at least 90 days.
+AUD-07,Incomplete vulnerability assessments on web applications,CTRL-13,Information Security,High,Open,55,Alex Mercer,Run monthly authenticated DAST scanning reports and triage findings.
+AUD-08,Supplier policy not updated for current remote-work standards,CTRL-14,Legal & Procurement,Low,In Progress,12,Rachel Green,Draft remote-access clauses to incorporate into standard vendor service agreements.

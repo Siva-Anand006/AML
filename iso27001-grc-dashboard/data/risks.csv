@@ -1,0 +1,13 @@
+Risk ID,Risk Name,Department,Likelihood,Impact,Risk Score,Risk Level,Risk Owner,Mitigation Plan
+RSK-01,Ransomware outbreak causing operations shutdown,IT Operations,3,5,15,High,David Chen,Deploy off-site immutable backups and endpoint detection tools.
+RSK-02,Unauthorized privilege escalation on production servers,Information Security,2,5,10,Medium,Alex Mercer,Implement Just-In-Time access controls and MFA requirements.
+RSK-03,Exfiltration of sensitive customer PII via unencrypted channels,Engineering,4,5,20,Critical,Marcus Vance,Apply Data Loss Prevention (DLP) filters and TLS enforcement.
+RSK-04,Social engineering / Phishing targeting administrative staff,HR,5,3,15,High,Emma Watson,Conduct quarterly phishing simulation exercises and mandatory security training.
+RSK-05,Vendor cloud hosting breach resulting in data exposure,Legal & Procurement,3,4,12,High,Rachel Green,Enforce SOC 2 Type II audit reviews and strict vendor security clauses.
+RSK-06,Critical power outage in main server facility,Facilities,1,4,4,Low,John Miller,Maintain dual redundant UPS backups and contract regular generator checks.
+RSK-07,Failure to revoke access keys for terminated employees,HR,4,3,12,High,Emma Watson,Automate HR active directory sync to trigger immediate key revocations.
+RSK-08,Vulnerable open-source packages in internal products,Engineering,4,4,16,Critical,Marcus Vance,Integrate software composition analysis (SCA) scanners into the CI/CD pipeline.
+RSK-09,Inadequate logging on legacy banking integrations,Information Security,3,3,9,Medium,Alex Mercer,Migrate integrations to modern standard central logging frameworks.
+RSK-10,Non-compliance with local data protection laws (GDPR/CCPA),Compliance,2,5,10,Medium,Sarah Jenkins,Periodic legal compliance assessments and clear privacy impact analyses.
+RSK-11,Data leakage via physical USB drives on endpoints,IT Operations,3,2,6,Medium,David Chen,Enforce USB restriction policies via Mobile Device Management (MDM).
+RSK-12,Insecure third-party messaging integrations,Compliance,3,3,9,Medium,Sarah Jenkins,Enforce single-sign-on (SSO) and central auditing controls on messaging integrations.

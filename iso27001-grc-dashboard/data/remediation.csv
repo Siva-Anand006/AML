@@ -1,0 +1,8 @@
+Action ID,Related Finding ID,Action Description,Owner,Due Date,Status,Priority
+REM-01,AUD-01,Configure Logstash pipelines to read legacy server transaction tables.,Alex Mercer,2026-06-30,In Progress,Critical
+REM-02,AUD-02,Retire legacy staging servers and transition code onto updated baseline instances.,David Chen,2026-07-15,In Progress,High
+REM-03,AUD-03,Build API mapping layer connecting ADP offboarding hooks to Identity Provider.,Emma Watson,2026-04-15,Overdue,High
+REM-04,AUD-04,Define technical business continuity targets and schedule recovery simulation calendar.,David Chen,2026-08-01,Not Started,Medium
+REM-05,AUD-05,Install TLS certificates across network load balancers.,Marcus Vance,2026-05-10,Completed,Medium
+REM-06,AUD-07,Configure vulnerability scanners to run weekly against production endpoints.,Alex Mercer,2026-05-20,Overdue,High
+REM-07,AUD-08,Amend master remote-working addendum for vendor compliance reviews.,Rachel Green,2026-09-01,In Progress,Low
