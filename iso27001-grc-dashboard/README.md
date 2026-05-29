@@ -1,116 +1,89 @@
-# ISO 27001 GRC & Internal Audit Monitoring Platform
+# ISO 27001 GRC & Internal Audit Dashboard
 
-A professional, local Governance, Risk, and Compliance (GRC) platform designed to track and audit security controls, evaluate enterprise risk, monitor internal audit pipelines, and assess third-party vendor exposures. Built using Streamlit, Pandas, and Plotly, this platform serves as an interactive compliance decision engine modeled after industry-standard GRC toolsets.
+A local, Streamlit-based Governance, Risk, and Compliance (GRC) dashboard built to simulate information security compliance tracking, enterprise risk registries, internal audits, and vendor security assessments. It dynamically computes compliance index metrics, visualizes risk matrices, and generates executive-ready markdown reports.
 
----
+## Overview
 
-## 🎯 Business Context & GRC Objectives
+Organizations maintaining or prepping for ISO/IEC 27001:2022 need a way to track the health of their controls, document audit findings, register risks, and log remediation activities. Using disconnected spreadsheets often leads to data duplication and lack of department-level clarity.
 
-Organizations pursuing or maintaining **ISO/IEC 27001:2022** certification are required to establish systematic methods for monitoring control health (Clause 9.1), conducting internal audits (Clause 9.2), and executing risk treatment plans (Clause 6.2). 
+This tool consolidates those datasets into a single dashboard, showing:
+1. **Control Auditing**: Track status (Compliant, Partially Compliant, Non-Compliant) and review schedules for 20 sample Annex A controls.
+2. **Enterprise Risk Register**: Likelihood-impact (5x5) risk matrix mapping to organizational departments.
+3. **Audit & Remediation Tracking**: Links internal audit findings to specific failed controls, mapping out action items and due dates.
+4. **Third-Party Vendor Management**: Track vendor contract periods, sensitivity, and assessment ratings.
+5. **Executive Summary Generator**: Pulls active data states into a structured markdown advisory memo for leadership review.
 
-Maintaining separate spreadsheets for controls, enterprise risk registers, internal audit findings, and vendor assessments often leads to fragmented visibility, disjointed filtering, and lagging remediation timelines. 
-
-This platform unifies these workflows into a single compliance cockpit, offering:
-1. **Real-time Compliance Indexes**: Dynamic calculation of control health percentages based on weighted compliance assessments.
-2. **Unified Data Cross-Filtering**: Instant synchronization across separate datasets (e.g., viewing only the Engineering department's active controls, critical risks, open audit findings, and high-risk vendors simultaneously).
-3. **Structured Remediation & Closing Lifecycles**: A collaborative interface allowing users to record, update, and persist control reviews, audit statuses, and risk mitigation plans directly to disk.
-4. **Automated C-Suite Advisory Drafting**: An executive report builder that translates active dataset states into markdown security memos.
-
----
-
-## 📁 Repository Structure
+## File Structure
 
 ```
-iso27001-grc-dashboard/
-├── app.py                      # Streamlit application UI & modules layout
-├── requirements.txt            # Project dependencies (Streamlit, Pandas, Plotly)
-├── README.md                   # Technical documentation and deployment guide
-├── data/                       # Local directory containing CSV data tables
-│   ├── controls.csv            # Annex A control inventory
-│   ├── risks.csv               # Quantitative risk register
-│   ├── audit_findings.csv      # Audit issues database
-│   ├── remediation.csv         # Action plan tracker
-│   └── vendors.csv             # Third-party risk profiles
-└── src/                        # Platform logic sub-packages
+├── app.py                      # Streamlit UI & interactive dashboards
+├── requirements.txt            # Package dependencies
+├── README.md                   # Setup guide and technical overview
+├── data/                       # CSV databases
+│   ├── controls.csv
+│   ├── risks.csv
+│   ├── audit_findings.csv
+│   ├── remediation.csv
+│   └── vendors.csv
+└── src/                        # Core Python scripts
     ├── __init__.py
-    ├── data_generator.py       # Deterministic realistic synthetic generator
-    ├── data_loader.py          # Session-state state engine & persistence
-    ├── risk_scoring.py         # Risk level calculations and matrix settings
-    ├── compliance_metrics.py   # Aggregations, percentages, and metrics
+    ├── data_generator.py       # Coherent synthetic data builder
+    ├── data_loader.py          # Session-state loader & CSV write-backs
+    ├── risk_scoring.py         # Risk level logic & matrix builders
+    ├── compliance_metrics.py   # Aggregation KPIs & compliance formula
     └── report_generator.py     # Executive report compiler
 ```
 
----
+## Logic & Calculations
 
-## ⚙️ Technical Architecture & Metrics Logic
-
-### 1. ISO 27001 Control Health Index
-The platform computes a composite health score based on the status of standard controls:
+### 1. ISO 27001 Compliance Index
+Calculates a weighted compliance percentage based on control status:
 $$\text{Compliance Score (\%)} = \frac{\text{Compliant Controls} + (0.5 \times \text{Partially Compliant Controls})}{\text{Total Controls}} \times 100$$
-Controls are categorized under standard **ISO 27001:2022** clauses (e.g., A.5 Organisational controls, A.7 Physical controls, A.8 Technological controls).
 
-### 2. Quantitative Risk-Scoring Engine
-Following ISO 27005 guidelines, risk exposure is modeled using likelihood and impact factors (rated 1 to 5):
-$$\text{Risk Score} = \text{Likelihood} \times \text{Impact} \quad (\text{Range: } 1 - 25)$$
-Scores are classified into standard priority levels:
-- `1 - 5`: **Low** (Acceptable risk)
-- `6 - 10`: **Medium** (Monitor with existing controls)
-- `11 - 15`: **High** (Mitigate within scheduled development)
-- `16 - 25`: **Critical** (Immediate escalation and mitigation)
+### 2. Risk Matrix Math
+Calculates risk scores following typical qualitative frameworks:
+$$\text{Risk Score} = \text{Likelihood (1-5)} \times \text{Impact (1-5)}$$
+Tiers are assigned as:
+- `1 - 5`: Low
+- `6 - 10`: Medium
+- `11 - 15`: High
+- `16 - 25`: Critical
 
-### 3. Integrated Cross-Filtering
-Filters applied in the sidebar cascade globally:
-- Filtering by **Department** limits controls, risks, audit findings, and vendor registries to that specific business unit.
-- Finding-to-remediation relationships are automatically resolved (e.g., filtering for a specific audit status isolates the related action items in the remediation tracker).
+### 3. Integrated Sidebar Filters
+Filters applied globally cascade to relevant datasets:
+- Selecting a **Department** filters controls, risks, audit findings, and vendors.
+- Audit finding filters automatically cascade to isolate corresponding tasks in the remediation pipeline.
 
----
+## Features
 
-## 🚀 Key Dashboard Features
+*   **KPI Overview**: Scorecards outlining active failures, open findings, compliance percentages, and critical items.
+*   **Controls Tracker**: Full database of controls with dates and a quick form to update status (persisted back to the local CSVs).
+*   **Risk Registry & Map**: Plotly 5x5 density heat map displaying risk distribution, with a form to log new risks.
+*   **Audit & Action Pipeline**: Aging charts for audit findings and progress indicators mapping out resolved vs. overdue actions.
+*   **Third-Party Vendors**: Expiry calendars, approvals, and data sensitivity ratings.
+*   **Report Exporter**: Visualizes the active GRC metrics inside a copy-pasteable markdown advisor block with download utilities.
 
-*   **Executive Dashboard**: Modern visual scorecards displaying high-priority KPIs, a Plotly Gauge speedometer of compliance health, and interactive charts plotting risk averages and audit volume by department.
-*   **Controls Matrix**: Comprehensive ledger of regulatory controls with review dates and an interactive form allowing immediate status overrides that persist back to local CSV storage.
-*   **Interactive Risk Register**: Features a 5x5 Plotly risk heat map counting scenarios residing in each likelihood-impact cell, alongside an entry form to log new threat vectors.
-*   **Audit Aging & Remediation Tracker**: Analyzes finding severity distribution, visualizes action-completion progress bars, and highlights critical overdue tasks.
-*   **Third-Party Vendor Module**: Identifies high-risk processors operating on sensitive datasets, monitors contract expiry timelines, and maps vendor status ratings.
-*   **Report Generator**: Builds a structured markdown executive brief complete with target statistics and recommended roadmaps, ready for clipboard copying or file downloading.
+## Getting Started
 
----
-
-## 🛠️ Installation & Execution Guide
-
-### Prerequisites
-*   Python 3.9 or higher
-
-### Step-by-Step Launch
-1. Navigate into the platform directory:
+### Installation
+1. Navigate to the project directory:
    ```bash
    cd iso27001-grc-dashboard
    ```
 
-2. Establish and activate a Python virtual environment:
+2. Setup a virtual environment:
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. Install project dependencies:
+3. Install packages:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Launch the Streamlit application:
+4. Run the application:
    ```bash
    streamlit run app.py
    ```
-*Note: If no datasets exist, the platform automatically generates realistic synthetic datasets inside `data/` upon launch.*
-
----
-
-## 📝 Resume Bullet Point Highlights
-
-**Governance, Risk & Compliance (GRC) Dashboard | Python, Streamlit, Pandas, Plotly**
-*   Designed and built a modular GRC compliance dashboard simulating ISO 27001 audit workflows, risk registers, and third-party vendor monitoring.
-*   Developed a dynamic risk-scoring model (Likelihood × Impact) and interactive 5x5 heat map using Plotly, allowing risk managers to identify and log security threat vectors.
-*   Implemented a session-state-driven data load and write-back engine in Pandas to enable persistent database CRUD updates directly to underlying CSV storage.
-*   Created an integrated cross-filtering controller to cascade department, risk, and control selections globally across separate relational data models, improving data query efficiency.
-*   Integrated a dynamic markdown executive report compiler, translating active GRC metrics into structured compliance advisory briefs for leadership reviews.
+*Note: If data CSVs are not present under `data/`, the application will auto-run the synthetic generator to build standard sample files.*
