@@ -1,0 +1,17 @@
+# Virtual environments in any project subdirectory
+**/venv/
+**/env/
+**/.venv/
+**/ENV/
+
+# Python cache and compiled files
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.pytest_cache/
+
+# OS files
+**/.DS_Store
+**/Thumbs.db
+.DS_Store
